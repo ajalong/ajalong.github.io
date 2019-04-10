@@ -1,0 +1,66 @@
+.App {
+  text-align: center;
+  font-family: serif;
+}
+
+.small {
+  font-size: 0.8em;
+}
+
+#search-pre-text {
+  margin: 0;
+}
+
+.App-header {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1em;
+}
+
+#search-container {
+  width: 90%;
+  background-color: #eeeeee;
+  padding-bottom: 1em;
+}
+
+#search-bar {
+  width: 245px;
+}
+
+#container {
+  margin-top: 0.3em;
+  width: 90%;
+  display: grid;
+  grid-template-columns: 33.2% 33.2% 33.2%;
+  grid-gap: 0.2%;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+}
+
+#first-list {
+  margin-top: 1em;
+}
+
+#left {
+  background-color: #7ee5da;
+}
+
+#center {
+  background-color: #70ccc2;
+}
+
+#right {
+  background-color: #62b3aa;
+}
+
+@media only screen and (max-width: 360px) {
+  img {
+    width: 100%;
+  }
+}
