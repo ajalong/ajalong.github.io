@@ -1,22 +1,43 @@
 import React, { Component } from "react";
 //Helmet used to manage <head> (https://www.npmjs.com/package/react-helmet)
 import { Helmet } from "react-helmet";
-import "./App.css";
-import googleBetaLogo from "./img/google-beta-logo.jpg";
+import "./../style/Launch.css";
+import googleBetaLogo from "./../img/google-beta-logo.jpg";
+import { withRouter } from "react-router-dom";
+import SearchPage1 from "./searchPages/SearchPage1";
 
-class App extends Component {
+class Launch extends Component {
   //Dictates what is typed in the search bar (https://stackoverflow.com/questions/27827234/how-to-handle-the-onkeypress-event-in-reactjs)
   handleKeyPress = event => {
-    var firstSearchString = "Surveillance Capitalism";
+    var firstSearchString = "What is surveillance capitalism?";
     //Converts firstSearchString into an array of its members (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from)
     var searchStringArray = Array.from(firstSearchString);
     //Gets length of current sting in the search bar
     var i = document.getElementById("search-bar").value.length;
-    //Limits length of characters entered to the dictated query
-    if (i < 23) {
-      //
+    //Does search if enter pressed
+    if (event.key === "Enter") {
+      this.handleSearch();
+      //Limits length of characters entered to the dictated query
+    } else if (i < 32) {
+      //Append the current vaule insode the search bar with the next letter in the search query
       document.getElementById("search-bar").value += searchStringArray[i];
+      console.log(searchStringArray[i]);
       i++;
+    } else {
+      console.log("STOP TYPING FOOL");
+    }
+  };
+
+  handleSearch = event => {
+    //Gets length of current sting in the search bar
+    var i = document.getElementById("search-bar").value.length;
+    //Forces user to input full search query
+    if (i < 32) {
+      console.log("Press more buttons");
+    } else {
+      //Show SearchPage
+      console.log(i);
+      this.props.history.push("/searchpage1");
     }
   };
 
@@ -24,7 +45,7 @@ class App extends Component {
     return (
       <div className="App">
         <Helmet>
-          <title>Surveillance Capitalism</title>
+          <title>Surveillance Capitalism - Launch</title>
           <meta
             name="description"
             content="Documenting surveillance capitalism"
@@ -37,22 +58,22 @@ class App extends Component {
         <header className="App-header">
           <img
             src={googleBetaLogo}
-            max-width="351"
-            max-height="113"
+            max-width="238.031"
+            max-height="78"
             alt="Google!"
           />
-          <div id="search-container">
+          <form id="search-container" onClick={this.handleSearch}>
             <p id="search-pre-text">Search the web using Google!</p>
             <input
               id="search-bar"
               type="text"
               onKeyPress={this.handleKeyPress}
-              readonly="readonly"
+              readOnly="readonly"
             />
             <br />
-            <input type="submit" value="Google Search" />
-            <input type="submit" value="I'm feeling lucky" />
-          </div>
+            <input type="button" value="Google Search" />
+            <input type="button" value="I'm feeling lucky" />
+          </form>
           <div id="container">
             <div id="left" className="grid">
               <ul id="first-list" className="list">
@@ -62,7 +83,7 @@ class App extends Component {
                     href="http://web.archive.org/web/19990427131732/http://www.google.com/stanford"
                     target="_blank"
                   >
-                    Standford Search
+                    Stanford Search
                   </a>
                 </li>
                 <li>
@@ -108,11 +129,11 @@ class App extends Component {
               <a href="">Archive</a>
             </div>
           </div>
-          <p class="small">Copyright ©1999 Google Inc.</p>
+          <p className="small">Copyright ©1999 Google Inc.</p>
         </header>
       </div>
     );
   }
 }
 
-export default App;
+export default withRouter(Launch);

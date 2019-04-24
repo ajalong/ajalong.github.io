@@ -1,0 +1,47 @@
+body {
+  font-family: verdana, arial, sans-serif;
+}
+
+p {
+  margin: 0;
+}
+
+#logo {
+  height: 78px;
+  width: auto;
+}
+
+#header-form {
+  display: inline;
+  position: relative;
+  top: -16px;
+  left: 24px;
+}
+
+.header-input {
+  margin-left: 5.63px;
+}
+
+hr {
+  border-bottom-width: 0px;
+}
+
+#search-meta {
+  text-align: center;
+  color: #6f6f6f;
+  font-size: small;
+  margin: 1em;
+}
+
+.result {
+  margin: 16px 0px 16px 0px;
+  width: 550px;
+}
+
+.resultSmall {
+  font-size: small;
+}
+
+.resultURL {
+  color: #008000;
+}
